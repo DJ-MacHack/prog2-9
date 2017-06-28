@@ -10,6 +10,9 @@
 #include <sstream>
 //#include <windows.h>
 #include "Artikeldialog.h"
+#include "Kleidung.h"
+#include "Elektrogeraete.h"
+#include "Lebensmittel.h"
 
 /**
  * Default deconstructor
@@ -46,11 +49,16 @@ string Artikeldialog::auswahl() {
  * @return neu
  */
 Artikel* Artikeldialog::artikelErstellen() {
-    int nummer, menge;
+    int nummer, menge, castint;
     double preis;
     string name;
-    Artikel* wrong = new Artikel(1000);
+    ArtikelTyp typ;
+    Artikel* neu = nullptr;
     do {
+        cout << "Artikeltyp: " << ArtikelTyp::ARTIKEL << " Artikel; " << ArtikelTyp::LEBENSMITTEL << " Lebensmittel; " <<
+             ArtikelTyp::ELEKTROGERAET << " Elektrogeraet; " << ArtikelTyp::KLEIDUNG << " Kleidung;" << endl;
+        cin >> castint;
+        typ = static_cast<ArtikelTyp>(castint);
         cout << "Ihre vierstellige Artikelnummer:" << endl;
         cin >> nummer;
         cout << endl << "Ihr Artikelname:" << endl;
@@ -61,7 +69,18 @@ Artikel* Artikeldialog::artikelErstellen() {
         cin >> preis;
         cout << endl;
         try {
-            Artikel* neu = new Artikel(nummer, name, menge, preis);
+            if(typ == ARTIKEL) {
+                neu = new Artikel(nummer, name, menge, preis);
+            }
+            if(typ == LEBENSMITTEL) {
+                neu = new Lebensmittel(nummer, name, menge, preis);
+            }
+            if(typ == ELEKTROGERAET) {
+                neu = new Elektrogeraete(nummer, name, menge, preis);
+            }
+            if(typ == KLEIDUNG) {
+                neu = new Kleidung(nummer, name, menge, preis);
+            }
             return neu;
         } catch (exception& e) {
             cout << e.what() << endl;
@@ -69,7 +88,7 @@ Artikel* Artikeldialog::artikelErstellen() {
             else { cout << "Fehler bei der Eingabe!" << endl; }
         }
     } while (cin);
-    return wrong;
+    return neu;
 }
 
 /**

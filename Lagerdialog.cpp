@@ -137,7 +137,7 @@ void Lagerdialog::ausfuehrenFunktion(FunktionsTyp funktion) {
             this->lager->changePreis(betrag);
             break;
         case ENDE:
-            cout << this->lager->toString() << endl;
+            cout << *(this->lager) << endl;
             this->lager->printCredits();
             break;
         default:

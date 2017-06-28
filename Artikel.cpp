@@ -69,9 +69,6 @@ Artikel::Artikel(int artikelnummer, string bezeichnung, int bestand, double prei
     setPreis(preis);
 }
 
-//Nebenkonstruktoren, die den Hauptkonstruktor aufrufen
-Artikel::Artikel(int artikelnummer, string bezeichnung):Artikel(artikelnummer, bezeichnung,0,0.0) {}
-Artikel::Artikel(int artikelnummer):Artikel(artikelnummer, "Testbezeichnung",0, 0.0) {} //Für Artikel, deren Name noch nicht bekannt ist/nicht feststeht
 /**
  * Gibt den aktuellen Bestand aus
  *@return bestand
@@ -194,4 +191,16 @@ Artikel& Artikel::operator=(const Artikel& artikel){
     setBestand(artikel.getBestand());
     setArtikelnummer(artikel.getArtikelnummer());
     return *this;
+}
+
+ostream& operator<<(ostream& stream, const Artikel& artikel) {
+    artikel.ausgeben(stream);
+    return stream;
+}
+
+void Artikel::ausgeben(std::ostream& stream) const{
+    stream << "Artikel: " << this->getBezeichnung() << endl;
+    stream << "Artikelnummer: " << this->getArtikelnummer() << endl;
+    stream << "Artikelmenge: " << this->getBestand() << endl;
+    stream << "Preis: " << this->getPreis() << endl;
 }

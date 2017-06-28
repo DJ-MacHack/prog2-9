@@ -12,6 +12,7 @@
 #include <iostream>
 #include <list>
 #include <map>
+#include <ctime>
 #include "Artikel.h"
 #include "Artikeldialog.h"
 
@@ -41,10 +42,13 @@ public:
     void changePreis(double prozent);
     void printLager();
     std::string toString() const;
+    tm getDate() const {
+        return *date;
+    }
     void printCredits();
     Lager& operator=(const Lager& lager);
+    friend ostream& operator<<(ostream& stream, const Lager& lager);
     const map<int, Artikel *> &getLagermap() const;
-
     virtual ~Lager();
 
 private:
@@ -54,7 +58,9 @@ private:
     void loescheArtikel();
     void setName(std::string name);
     void setDimension(int dimension);
+    void setDate(tm date);
     std::map<int, Artikel*> lagermap;
+    tm* date;
 };
 
 

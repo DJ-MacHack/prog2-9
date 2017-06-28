@@ -15,8 +15,6 @@ class Artikel {
 
 public: Artikel(const Artikel& artikel);
         Artikel(int nummer, string name, int menge, double preis);
-        Artikel(int nummer, string name);
-        Artikel(int nummer);
         void bucheZugang(int menge);
         void bucheAbgang(int menge);
         void  setBezeichnung(string name);
@@ -25,8 +23,9 @@ public: Artikel(const Artikel& artikel);
         int getArtikelnummer() const;
         double getPreis() const;
         void setPreis(double preis);
-    Artikel& operator=(const Artikel& Artikel);
-
+        Artikel& operator=(const Artikel& Artikel);
+        friend std::ostream& operator<<(std::ostream& stream, const Artikel& artikel);
+        virtual void ausgeben(std::ostream& stream) const;
 private:
         int bestand;
         string bezeichnung;

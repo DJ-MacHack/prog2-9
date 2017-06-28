@@ -77,6 +77,8 @@ class inLagerException : public exception {
 Lager::Lager(string name, int dimension) {
         setDimension(dimension);
         setName(name);
+        time_t now = time(0);
+        this->date = localtime(&now);
 }
 
 /**
@@ -90,6 +92,7 @@ Lager::Lager(const Lager& lager){
     for(map<int, Artikel*>::iterator iter = tmp.begin(); iter != tmp.end(); iter++){
         addArtikel(iter.operator*().second);
     }
+    setDate(lager.getDate());
 }
 
 /**
@@ -342,3 +345,17 @@ Lager& Lager::operator=(const Lager& lager){
     return *this;
 }
 
+/**
+ * private set date
+ * @param date
+ */
+void Lager::setDate(tm date) {
+    this->date = &date;
+}
+
+ostream& operator<<(ostream& stream, const Lager& lager){
+    for (map<int, Artikel*>::const_iterator iter = lager.getLagermap().begin(); iter != lager.getLagermap().end(); iter++){
+        Artikel tmp = *(iter.operator*().second);
+        stream << tmp;
+    }
+}

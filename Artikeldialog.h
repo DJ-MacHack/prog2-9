@@ -11,7 +11,7 @@
 #include "Artikel.h"
 #include <vector>
 #include <iostream>
-
+enum ArtikelTyp {ARTIKEL, LEBENSMITTEL, ELEKTROGERAET, KLEIDUNG};
 class Artikeldialog {
 public:
     void artikelDatenAnzeigen(const Artikel& artikel);
