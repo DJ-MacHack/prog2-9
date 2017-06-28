@@ -8,13 +8,8 @@
 
 #include "Elektrogeraete.h"
 
-Elektrogeraete::Elektrogeraete(int nummer, const string &name, int menge, double preis) : Artikel(nummer, name, menge,
-                                                                                                  preis) {setKW();}
-
-void Elektrogeraete::setKW() {
-    int kw;
-    cout << "Verbrauch in kW: " << endl;
-    cin >> kw;
+Elektrogeraete::Elektrogeraete(int nummer, const string &name, int menge, double preis, int kw) : Artikel(nummer, name, menge,
+                                                                                                  preis) {
     this->kW = kw;
 }
 

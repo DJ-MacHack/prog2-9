@@ -14,7 +14,7 @@
 
 class Elektrogeraete : public Artikel {
 public:
-    Elektrogeraete(int nummer, const string &name, int menge, double preis);
+    Elektrogeraete(int nummer, const string &name, int menge, double preis, int kw);
     Elektrogeraete(const Elektrogeraete& artikel) = delete;
     virtual void ausgeben(std::ostream& stream) const;
     int getKW() const {
@@ -22,7 +22,6 @@ public:
     }
 
 private:
-    void setKW();
     int kW;
 };
 

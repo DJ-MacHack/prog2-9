@@ -14,7 +14,7 @@
 
 class Lebensmittel : public Artikel {
 public:
-    Lebensmittel(int nummer, const string &name, int menge, double preis);
+    Lebensmittel(int nummer, const string &name, int menge, double preis, int tag, int monat, int jahr);
     Lebensmittel(const Lebensmittel& artikel) = delete;
     tm* getDate() const {
         return  date;
@@ -23,7 +23,6 @@ public:
     virtual void ausgeben(std::ostream& stream) const;
 private:
     tm* date;
-    void setDate();
 };
 
 

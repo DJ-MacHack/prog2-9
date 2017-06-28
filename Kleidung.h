@@ -14,7 +14,7 @@
 
 class Kleidung : public Artikel{
 public:
-    Kleidung(int nummer, const string &name, int menge, double preis);
+    Kleidung(int nummer, const string &name, int menge, double preis, string farbe, string groesse);
     Kleidung(const Kleidung& artikel) = delete;
     virtual void ausgeben(std::ostream& stream) const;
     const string &getFarbe() const {
@@ -28,8 +28,6 @@ public:
 private:
     std::string farbe = "";
     std::string groesse = "";
-    void setFarbe();
-    void setGroesse();
 };
 
 

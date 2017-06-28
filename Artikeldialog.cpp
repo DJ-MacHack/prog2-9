@@ -49,9 +49,9 @@ string Artikeldialog::auswahl() {
  * @return neu
  */
 Artikel* Artikeldialog::artikelErstellen() {
-    int nummer, menge, castint;
+    int nummer, menge, castint, tag, monat, jahr, kw;
     double preis;
-    string name;
+    string name, farbe, groesse;
     ArtikelTyp typ;
     Artikel* neu = nullptr;
     do {
@@ -73,13 +73,28 @@ Artikel* Artikeldialog::artikelErstellen() {
                 neu = new Artikel(nummer, name, menge, preis);
             }
             if(typ == LEBENSMITTEL) {
-                neu = new Lebensmittel(nummer, name, menge, preis);
+                cout << "Mindesthalbarkeitsdatum" << endl;
+                cout << "Tag: " << endl;
+                cin >> tag;
+                cout << "Monat: " << endl;
+                cin >> monat;
+                cout << "Jahr: " << endl;
+                cin >> jahr;
+                Lebensmittel* test = new Lebensmittel(nummer, name, menge, preis, tag, monat, jahr);
+                test->pruefeMHD();
+                neu = test;
             }
             if(typ == ELEKTROGERAET) {
-                neu = new Elektrogeraete(nummer, name, menge, preis);
+                cout << "Leistung in kW: " << endl;
+                cin >> kw;
+                neu = new Elektrogeraete(nummer, name, menge, preis, kw);
             }
             if(typ == KLEIDUNG) {
-                neu = new Kleidung(nummer, name, menge, preis);
+                cout << "Farbe der Kleidung: " << endl;
+                cin >> farbe;
+                cout << "Groesse der Kleidung: " << endl;
+                cin >> groesse;
+                neu = new Kleidung(nummer, name, menge, preis, farbe, groesse);
             }
             return neu;
         } catch (exception& e) {

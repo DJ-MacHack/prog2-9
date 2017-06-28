@@ -9,22 +9,10 @@
 #include "Kleidung.h"
 using namespace std;
 
-Kleidung::Kleidung(int nummer, const string &name, int menge, double preis) : Artikel(nummer, name, menge, preis) {setFarbe();
-setGroesse();
-}
+Kleidung::Kleidung(int nummer, const string &name, int menge, double preis, string farbe, string groesse) : Artikel(nummer, name, menge, preis) {
+    this->farbe = farbe;
+    this->groesse = groesse;
 
-void Kleidung::setFarbe() {
-    string color = "";
-    cout << "Farbe der Kleidung: " << endl;
-    cin >> color;
-    this->farbe = color;
-}
-
-void Kleidung::setGroesse() {
-    string size = "";
-    cout << "Groesse der Kleidung" << endl;
-    cin >> size;
-    this->groesse = size;
 }
 
 void Kleidung::ausgeben(std::ostream &stream) const {
