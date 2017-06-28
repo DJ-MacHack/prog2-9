@@ -26,6 +26,8 @@ public: Artikel(const Artikel& artikel);
         Artikel& operator=(const Artikel& Artikel);
         friend std::ostream& operator<<(std::ostream& stream, const Artikel& artikel);
         virtual void ausgeben(std::ostream& stream) const;
+        friend class Lager;
+        friend class Lagerdialog;
 private:
         int bestand;
         string bezeichnung;

@@ -354,8 +354,14 @@ void Lager::setDate(tm date) {
 }
 
 ostream& operator<<(ostream& stream, const Lager& lager){
+    stream << "Lager: " << lager.getName() << endl;
+    stream << "Dimensionen: " << lager.getDimension() << endl;
+    stream << "Datum: " << lager.getDate().tm_mday << "." << lager.getDate().tm_mon+1 << "." << lager.getDate().tm_year+1900 << endl;
+    stream << endl;
+    int cnt = 1;
     for (map<int, Artikel*>::const_iterator iter = lager.getLagermap().begin(); iter != lager.getLagermap().end(); iter++){
-        Artikel tmp = *(iter.operator*().second);
-        stream << tmp;
+        stream << "Artikel " << cnt << endl;
+        stream << *(iter.operator*().second);
+        cnt++;
     }
 }
