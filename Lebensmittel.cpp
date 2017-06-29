@@ -46,3 +46,7 @@ bool Lebensmittel::pruefeMHD() {
     }
     return true;
 }
+
+Lebensmittel::~Lebensmittel() {
+    delete(this->date);
+}

@@ -22,6 +22,9 @@ public:
     }
     bool pruefeMHD();
     virtual void ausgeben(std::ostream& stream) const;
+
+    virtual ~Lebensmittel();
+
 private:
     Date* date;
 };
