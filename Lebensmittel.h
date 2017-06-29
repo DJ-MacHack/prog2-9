@@ -11,18 +11,19 @@
 
 #include <ctime>
 #include "Artikel.h"
+#include "Date.h"
 
 class Lebensmittel : public Artikel {
 public:
     Lebensmittel(int nummer, const string &name, int menge, double preis, int tag, int monat, int jahr);
     Lebensmittel(const Lebensmittel& artikel) = delete;
-    tm* getDate() const {
+    Date* getDate() const {
         return  date;
     }
     bool pruefeMHD();
     virtual void ausgeben(std::ostream& stream) const;
 private:
-    tm* date;
+    Date* date;
 };
 
 

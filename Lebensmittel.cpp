@@ -7,6 +7,7 @@
 */
 
 #include "Lebensmittel.h"
+
 using namespace std;
 
 class AbgelaufenException: public exception {
@@ -17,33 +18,31 @@ class AbgelaufenException: public exception {
 
 Lebensmittel::Lebensmittel(int nummer, const string &name, int menge, double preis, int tag, int monat, int jahr) : Artikel(nummer, name, menge,
                                                                                               preis) {
-    time_t now = time(0);
-    this->date = localtime(&now);
-    this->date->tm_year = jahr-1900;
-    this->date->tm_mon = monat-1;
-    this->date->tm_mday = tag;
-    this->date->tm_hour = 1;
-    this->date->tm_min = 1;
-    this->date->tm_sec = 1;
+    this->date = new Date(tag, monat, jahr);
 }
 
 void Lebensmittel::ausgeben(std::ostream &stream) const {
     Artikel::ausgeben(stream);
-    stream << "Mindesthalbarkeitsdatum: " << getDate()->tm_mday << "." << getDate()->tm_mon+1 << "." << getDate()->tm_year+1900 << endl;
+    stream << "Mindesthalbarkeitsdatum: " << *(this->date) << endl;
 }
 
 bool Lebensmittel::pruefeMHD() {
-    //todo datum klasse -.-
     time_t now = time(0);
     tm *ltm = localtime(&now);
-    if(ltm->tm_year > this->date->tm_year){
+    if(ltm->tm_year+1900 > this->date->getYear()){
         throw abgelaufenExp;
-    }
-    if(ltm->tm_mon > this->date->tm_mon){
-        throw abgelaufenExp;
-    }
-    if(ltm->tm_mday > this->date->tm_mday){
-        throw abgelaufenExp;
+    } else {
+        if (ltm->tm_year + 1900 == this->date->getYear()) {
+            if (ltm->tm_mon + 1 > this->date->getMonth()) {
+                throw abgelaufenExp;
+            } else {
+                if ((ltm->tm_mon + 1 == this->date->getMonth())) {
+                    if (ltm->tm_mday > this->date->getDay()) {
+                        throw abgelaufenExp;
+                    }
+                }
+            }
+        }
     }
     return true;
 }
