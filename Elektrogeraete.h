@@ -20,7 +20,6 @@ public:
     int getKW() const {
         return kW;
     }
-    virtual Elektrogeraete& operator=(const Elektrogeraete& artikel);
 
 private:
     int kW;

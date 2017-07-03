@@ -17,7 +17,6 @@ public:
     Kleidung(int nummer, const string &name, int menge, double preis, string farbe, string groesse);
     Kleidung(const Kleidung& artikel);
     virtual void ausgeben(std::ostream& stream) const;
-    virtual Kleidung& operator=(const Kleidung& artikel);
     const string &getFarbe() const {
         return farbe;
     }

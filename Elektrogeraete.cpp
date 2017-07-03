@@ -18,14 +18,6 @@ Elektrogeraete::Elektrogeraete(const Elektrogeraete &artikel): Artikel(artikel.g
     this->kW = artikel.getKW();
 }
 
-Elektrogeraete &Elektrogeraete::operator=(const Elektrogeraete &artikel) {
-    if(this==&artikel){
-        return *this;
-    }
-    clone(artikel);
-    return *this;
-}
-
 void Elektrogeraete::clone(const Elektrogeraete &artikel) {
     setArtikelnummer(artikel.getArtikelnummer());
     setBestand(artikel.getBestand());

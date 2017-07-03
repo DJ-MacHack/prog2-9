@@ -31,14 +31,6 @@ Lebensmittel::Lebensmittel(const Lebensmittel &artikel) : Artikel(artikel.getArt
     setDate(*(new Date(artikel.getDate()->getDay(), artikel.getDate()->getMonth(), artikel.getDate()->getYear())));
 }
 
-Lebensmittel &Lebensmittel::operator=(const Lebensmittel &artikel) {
-    if(this==&artikel){
-        return *this;
-    }
-    clone(artikel);
-    return *this;
-}
-
 void Lebensmittel::clone(const Lebensmittel artikel) {
     setArtikelnummer(artikel.getArtikelnummer());
     setBestand(artikel.getBestand());

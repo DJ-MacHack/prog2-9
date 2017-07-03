@@ -21,14 +21,6 @@ Kleidung::Kleidung(const Kleidung &artikel) :Artikel(artikel.getArtikelnummer(),
     this->setGroesse(artikel.getGroesse());
 }
 
-Kleidung &Kleidung::operator=(const Kleidung &artikel) {
-    if(this==&artikel){
-        return *this;
-    }
-    clone(artikel);
-    return *this;
-}
-
 void Kleidung::clone(const Kleidung artikel) {
     setArtikelnummer(artikel.getArtikelnummer());
     setBestand(artikel.getBestand());

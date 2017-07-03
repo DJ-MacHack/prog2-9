@@ -23,7 +23,7 @@ public:
     bool pruefeMHD();
     virtual void ausgeben(std::ostream& stream) const;
     virtual ~Lebensmittel();
-    Lebensmittel& operator=(const Lebensmittel& artikel);
+
 private:
     Date* date;
     virtual void clone(const Lebensmittel artikel);
