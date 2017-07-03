@@ -193,11 +193,21 @@ Artikel& Artikel::operator=(const Artikel& artikel){
     return *this;
 }
 
+/**
+ * cout
+ * @param stream
+ * @param artikel
+ * @return
+ */
 ostream& operator<<(ostream& stream, const Artikel& artikel) {
     artikel.ausgeben(stream);
     return stream;
 }
 
+/**
+ * cout
+ * * @param stream
+ */
 void Artikel::ausgeben(std::ostream& stream) const{
     stream << "Artikel: " << this->getBezeichnung() << endl;
     stream << "Artikelnummer: " << this->getArtikelnummer() << endl;
@@ -205,6 +215,9 @@ void Artikel::ausgeben(std::ostream& stream) const{
     stream << "Preis: " << this->getPreis() << endl;
 }
 
+/**
+ * destructor
+ */
 Artikel::~Artikel() {
 
 }

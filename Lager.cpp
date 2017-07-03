@@ -353,6 +353,12 @@ void Lager::setDate(tm date) {
     this->date = &date;
 }
 
+/**
+ * cout
+ * @param stream
+ * @param lager
+ * @return
+ */
 ostream& operator<<(ostream& stream, const Lager& lager){
     stream << "Lager: " << lager.getName() << endl;
     stream << "Dimensionen: " << lager.getDimension() << endl;
@@ -364,4 +370,5 @@ ostream& operator<<(ostream& stream, const Lager& lager){
         stream << *(iter.operator*().second);
         cnt++;
     }
+    return stream;
 }
