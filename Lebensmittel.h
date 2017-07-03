@@ -21,12 +21,13 @@ public:
         return  date;
     }
     bool pruefeMHD();
+    Artikel& operator=(const Artikel& Artikel) = delete;
     virtual void ausgeben(std::ostream& stream) const;
     virtual ~Lebensmittel();
 
 private:
     Date* date;
-    virtual void clone(const Lebensmittel artikel);
+    virtual void clone(const Artikel& artikel);
     void setDate(Date datum);
 };
 

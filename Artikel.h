@@ -23,7 +23,7 @@ public: Artikel(const Artikel& artikel);
         int getArtikelnummer() const;
         double getPreis() const;
         void setPreis(double preis);
-        virtual Artikel& operator=(const Artikel& Artikel);
+        Artikel& operator=(const Artikel& Artikel);
         friend std::ostream& operator<<(std::ostream& stream, const Artikel& artikel);
         virtual void ausgeben(std::ostream& stream) const;
         friend class Lager;
@@ -36,8 +36,6 @@ protected:
         double preis;
         void setArtikelnummer(int artikelnummer);
         void setBestand(int menge);
-        virtual void clone(const Artikel& artikel);
-
 };
 
 

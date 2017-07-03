@@ -18,14 +18,6 @@ Elektrogeraete::Elektrogeraete(const Elektrogeraete &artikel): Artikel(artikel.g
     this->kW = artikel.getKW();
 }
 
-void Elektrogeraete::clone(const Elektrogeraete &artikel) {
-    setArtikelnummer(artikel.getArtikelnummer());
-    setBestand(artikel.getBestand());
-    setPreis(artikel.getPreis());
-    setBezeichnung(artikel.getBezeichnung());
-    setKW(artikel.getKW());
-}
-
 void Elektrogeraete::ausgeben(std::ostream &stream) const {
     Artikel::ausgeben(stream);
     stream << "Verbrauch in kW: " << getKW() << endl;

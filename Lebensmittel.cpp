@@ -31,16 +31,8 @@ Lebensmittel::Lebensmittel(const Lebensmittel &artikel) : Artikel(artikel.getArt
     setDate(*(new Date(artikel.getDate()->getDay(), artikel.getDate()->getMonth(), artikel.getDate()->getYear())));
 }
 
-void Lebensmittel::clone(const Lebensmittel artikel) {
-    setArtikelnummer(artikel.getArtikelnummer());
-    setBestand(artikel.getBestand());
-    setPreis(artikel.getPreis());
-    setBezeichnung(artikel.getBezeichnung());
-    setDate(*(new Date(artikel.getDate()->getDay(), artikel.getDate()->getMonth(), artikel.getDate()->getYear())));
-}
-
 void Lebensmittel::setDate(Date datum) {
-
+    this->date = new Date(datum.getDay(),datum.getMonth(),datum.getYear());
 }
 
 bool Lebensmittel::pruefeMHD() {

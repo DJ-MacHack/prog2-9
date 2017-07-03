@@ -24,11 +24,10 @@ public:
     const string &getGroesse() const {
         return groesse;
     }
-
+    Artikel& operator=(const Artikel& Artikel) = delete;
 private:
     std::string farbe = "";
     std::string groesse = "";
-    virtual void clone(const Kleidung artikel);
     void setFarbe(string farbe){
         this->farbe = farbe;
     }

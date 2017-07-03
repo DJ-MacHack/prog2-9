@@ -17,13 +17,13 @@ public:
     Elektrogeraete(int nummer, const string &name, int menge, double preis, int kw);
     Elektrogeraete(const Elektrogeraete& artikel);
     virtual void ausgeben(std::ostream& stream) const;
+    Artikel& operator=(const Artikel& Artikel) = delete;
     int getKW() const {
         return kW;
     }
 
 private:
     int kW;
-    virtual void clone(const Elektrogeraete& artikel);
     void setKW(int kW) {
         this->kW = kW;
     }

@@ -49,7 +49,10 @@ class preisException: public exception {
  * @param artikel
  */
 Artikel::Artikel(const Artikel& artikel){
-    clone(artikel);
+    setArtikelnummer(artikel.getArtikelnummer());
+    setBestand(artikel.getBestand());
+    setPreis(artikel.getPreis());
+    setBezeichnung(artikel.getBezeichnung());
 }
 
 /**
@@ -64,13 +67,6 @@ Artikel::Artikel(int artikelnummer, string bezeichnung, int bestand, double prei
     setBezeichnung(bezeichnung);
     setBestand(bestand);
     setPreis(preis);
-}
-
-void Artikel::clone(const Artikel& artikel) {
-    setArtikelnummer(artikel.getArtikelnummer());
-    setBestand(artikel.getBestand());
-    setPreis(artikel.getPreis());
-    setBezeichnung(artikel.getBezeichnung());
 }
 
 /**
@@ -190,7 +186,10 @@ Artikel& Artikel::operator=(const Artikel& artikel){
     if(this==&artikel){
         return *this;
     }
-    clone(artikel);
+    setBezeichnung(artikel.getBezeichnung());
+    setPreis(artikel.getPreis());
+    setBestand(artikel.getBestand());
+    setArtikelnummer(artikel.getArtikelnummer());
     return *this;
 }
 
