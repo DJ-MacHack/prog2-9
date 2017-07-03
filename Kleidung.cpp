@@ -43,3 +43,10 @@ void Kleidung::ausgeben(std::ostream &stream) const {
     stream << "Farbe: " << getFarbe() << endl;
     stream << "Groesse: " << getGroesse() << endl;
 }
+
+Kleidung &Kleidung::operator=(const Kleidung &artikel) {
+    Artikel::operator=(artikel);
+    setGroesse(artikel.getGroesse());
+    setFarbe(artikel.getFarbe());
+    return *this;
+}

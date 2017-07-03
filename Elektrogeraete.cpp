@@ -38,3 +38,9 @@ void Elektrogeraete::ausgeben(std::ostream &stream) const {
     Artikel::ausgeben(stream);
     stream << "Verbrauch in kW: " << getKW() << endl;
 }
+
+Elektrogeraete &Elektrogeraete::operator=(const Elektrogeraete &artikel) {
+    Artikel::operator=(artikel);
+    setKW(artikel.getKW());
+    return *this;
+}

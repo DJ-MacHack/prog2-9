@@ -91,3 +91,9 @@ bool Lebensmittel::pruefeMHD() {
 Lebensmittel::~Lebensmittel() {
     delete(this->date);
 }
+
+Lebensmittel &Lebensmittel::operator=(const Lebensmittel &artikel) {
+    Artikel::operator=(artikel);
+    setDate(*artikel.getDate());
+    return *this;
+}

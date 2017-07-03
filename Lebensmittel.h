@@ -21,7 +21,7 @@ public:
         return  date;
     }
     bool pruefeMHD();
-    Artikel& operator=(const Artikel& Artikel) = delete;
+    Lebensmittel& operator=(const Lebensmittel& artikel);
     virtual void ausgeben(std::ostream& stream) const;
     virtual ~Lebensmittel();
 

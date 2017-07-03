@@ -24,7 +24,7 @@ public:
     const string &getGroesse() const {
         return groesse;
     }
-    Artikel& operator=(const Artikel& Artikel) = delete;
+    Kleidung& operator=(const Kleidung& artikel);
 private:
     std::string farbe = "";
     std::string groesse = "";
