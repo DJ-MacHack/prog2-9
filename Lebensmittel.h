@@ -27,7 +27,6 @@ public:
 
 private:
     Date* date;
-    virtual void clone(const Artikel& artikel);
     void setDate(Date datum);
 };
 
