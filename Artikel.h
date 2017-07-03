@@ -28,6 +28,7 @@ public: Artikel(const Artikel& artikel);
         virtual void ausgeben(std::ostream& stream) const;
         friend class Lager;
         friend class Lagerdialog;
+        virtual ~Artikel();
 
 protected:
         int bestand;

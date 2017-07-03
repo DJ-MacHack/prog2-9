@@ -204,3 +204,7 @@ void Artikel::ausgeben(std::ostream& stream) const{
     stream << "Artikelmenge: " << this->getBestand() << endl;
     stream << "Preis: " << this->getPreis() << endl;
 }
+
+Artikel::~Artikel() {
+
+}
