@@ -7,3 +7,15 @@
 */
 
 #include "Date.h"
+
+Date::Date(int day, int month, int year) {
+    this->day = day;
+    this->month = month;
+    this->year = year;
+}
+
+std::ostream &operator<<(std::ostream &stream, const Date &date) {
+    stream << date.getDay() << "." << date.getMonth() << "." << date.getYear();
+    return stream;
+}
+
