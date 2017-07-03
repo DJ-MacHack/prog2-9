@@ -13,6 +13,7 @@
 class Date {
 public:
     Date(int day, int month, int year);
+    Date(const Date& date);
     int getDay() const {
         return day;
     }
@@ -22,6 +23,7 @@ public:
     int getYear() const {
         return year;
     }
+    Date& operator=(const Date& date);
     friend std::ostream& operator<<(std::ostream& stream, const Date& artikel);
 private:
     int day, month, year;

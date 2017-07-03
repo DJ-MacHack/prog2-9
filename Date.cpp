@@ -31,3 +31,19 @@ std::ostream &operator<<(std::ostream &stream, const Date &date) {
     return stream;
 }
 
+Date::Date(const Date &date) {
+    this->day=date.getDay();
+    this->month=date.getMonth();
+    this->year=date.getYear();
+}
+
+Date &Date::operator=(const Date &date) {
+    if(this==&date){
+        return *this;
+    }
+    this->day=date.getDay();
+    this->month=date.getMonth();
+    this->year=date.getYear();
+    return *this;
+}
+
