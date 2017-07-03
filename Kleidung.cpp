@@ -15,6 +15,29 @@ Kleidung::Kleidung(int nummer, const string &name, int menge, double preis, stri
 
 }
 
+Kleidung::Kleidung(const Kleidung &artikel) :Artikel(artikel.getArtikelnummer(), artikel.getBezeichnung(), artikel.getBestand(),
+                                                     artikel.getPreis()) {
+    this->setFarbe(artikel.getFarbe());
+    this->setGroesse(artikel.getGroesse());
+}
+
+Kleidung &Kleidung::operator=(const Kleidung &artikel) {
+    if(this==&artikel){
+        return *this;
+    }
+    clone(artikel);
+    return *this;
+}
+
+void Kleidung::clone(const Kleidung artikel) {
+    setArtikelnummer(artikel.getArtikelnummer());
+    setBestand(artikel.getBestand());
+    setPreis(artikel.getPreis());
+    setBezeichnung(artikel.getBezeichnung());
+    setFarbe(artikel.getFarbe());
+    setFarbe(artikel.getGroesse());
+}
+
 void Kleidung::ausgeben(std::ostream &stream) const {
     Artikel::ausgeben(stream);
     stream << "Farbe: " << getFarbe() << endl;

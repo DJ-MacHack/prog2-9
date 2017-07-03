@@ -107,6 +107,7 @@ void Lagerdialog::ausfuehrenFunktion(FunktionsTyp funktion) {
     switch (funktion) {
         case ANLEGEN:
             this->lager->addNewArtikel();
+            cout << *(this->lager);
             break;
         case ZUGANG:
             cout << "Artikelnummer: ";
@@ -115,6 +116,7 @@ void Lagerdialog::ausfuehrenFunktion(FunktionsTyp funktion) {
             cin >> menge;
             cout << endl;
             this->lager->bucheZugang(artikelnummer, menge);
+            cout << *(this->lager);
             break;
         case ABGANG:
             cout << "Artikelnummer: ";
@@ -123,18 +125,21 @@ void Lagerdialog::ausfuehrenFunktion(FunktionsTyp funktion) {
             cin >> menge;
             cout << endl;
             this->lager->bucheAbgang(artikelnummer, menge);
+            cout << *(this->lager);
             break;
         case LOESCHEN:
             cout << "Artikelnummer: ";
             cin >> artikelnummer;
             cout << endl;
             this->lager->deleteArtikel(artikelnummer);
+            cout << *(this->lager);
             break;
         case PREISAENDERN:
             cout << endl << "Prozentuale Preisänderung: ";
             cin >> betrag;
             cout << endl;
             this->lager->changePreis(betrag);
+            cout << *(this->lager);
             break;
         case ENDE:
             cout << *(this->lager);

@@ -26,6 +26,31 @@ void Lebensmittel::ausgeben(std::ostream &stream) const {
     stream << "Mindesthalbarkeitsdatum: " << *(this->date) << endl;
 }
 
+Lebensmittel::Lebensmittel(const Lebensmittel &artikel) : Artikel(artikel.getArtikelnummer(), artikel.getBezeichnung(), artikel.getBestand(),
+        artikel.getPreis()) {
+    setDate(*(new Date(artikel.getDate()->getDay(), artikel.getDate()->getMonth(), artikel.getDate()->getYear())));
+}
+
+Lebensmittel &Lebensmittel::operator=(const Lebensmittel &artikel) {
+    if(this==&artikel){
+        return *this;
+    }
+    clone(artikel);
+    return *this;
+}
+
+void Lebensmittel::clone(const Lebensmittel artikel) {
+    setArtikelnummer(artikel.getArtikelnummer());
+    setBestand(artikel.getBestand());
+    setPreis(artikel.getPreis());
+    setBezeichnung(artikel.getBezeichnung());
+    setDate(*(new Date(artikel.getDate()->getDay(), artikel.getDate()->getMonth(), artikel.getDate()->getYear())));
+}
+
+void Lebensmittel::setDate(Date datum) {
+
+}
+
 bool Lebensmittel::pruefeMHD() {
     time_t now = time(0);
     tm *ltm = localtime(&now);

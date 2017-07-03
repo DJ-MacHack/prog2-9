@@ -15,14 +15,19 @@
 class Elektrogeraete : public Artikel {
 public:
     Elektrogeraete(int nummer, const string &name, int menge, double preis, int kw);
-    Elektrogeraete(const Elektrogeraete& artikel) = delete;
+    Elektrogeraete(const Elektrogeraete& artikel);
     virtual void ausgeben(std::ostream& stream) const;
     int getKW() const {
         return kW;
     }
+    virtual Elektrogeraete& operator=(const Elektrogeraete& artikel);
 
 private:
     int kW;
+    virtual void clone(const Elektrogeraete& artikel);
+    void setKW(int kW) {
+        this->kW = kW;
+    }
 };
 
 

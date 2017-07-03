@@ -15,8 +15,9 @@
 class Kleidung : public Artikel{
 public:
     Kleidung(int nummer, const string &name, int menge, double preis, string farbe, string groesse);
-    Kleidung(const Kleidung& artikel) = delete;
+    Kleidung(const Kleidung& artikel);
     virtual void ausgeben(std::ostream& stream) const;
+    virtual Kleidung& operator=(const Kleidung& artikel);
     const string &getFarbe() const {
         return farbe;
     }
@@ -28,6 +29,13 @@ public:
 private:
     std::string farbe = "";
     std::string groesse = "";
+    virtual void clone(const Kleidung artikel);
+    void setFarbe(string farbe){
+        this->farbe = farbe;
+    }
+    void setGroesse(string groesse) {
+        this->groesse = groesse;
+    }
 };
 
 

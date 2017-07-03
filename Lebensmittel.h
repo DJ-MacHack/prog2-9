@@ -16,17 +16,18 @@
 class Lebensmittel : public Artikel {
 public:
     Lebensmittel(int nummer, const string &name, int menge, double preis, int tag, int monat, int jahr);
-    Lebensmittel(const Lebensmittel& artikel) = delete;
+    Lebensmittel(const Lebensmittel& artikel);
     Date* getDate() const {
         return  date;
     }
     bool pruefeMHD();
     virtual void ausgeben(std::ostream& stream) const;
-
     virtual ~Lebensmittel();
-
+    Lebensmittel& operator=(const Lebensmittel& artikel);
 private:
     Date* date;
+    virtual void clone(const Lebensmittel artikel);
+    void setDate(Date datum);
 };
 
 
